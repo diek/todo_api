@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 DJANGO_APPS = [
-    "silk.middleware.SilkyMiddleware",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -42,11 +41,12 @@ DJANGO_APPS = [
 
 PROJECT_APPS = ["todos.apps.TodosConfig"]
 
-UTIL_APPS = ["silk", "django_extensions"]
+UTIL_APPS = ["silk", "django_extensions", "rest_framework"]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + UTIL_APPS
 
 MIDDLEWARE = [
+    "silk.middleware.SilkyMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -83,7 +83,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": BASE_DIR / "todo.db",
     }
 }
 
